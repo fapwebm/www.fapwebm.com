@@ -1,0 +1,253 @@
+/**
+ * Core SASS
+ */
+
+@import C:/WWW/Abases/classes.sass
+
+// -----------------------------------------------
+
+/**
+ * Variables
+ */
+$pad: 15px
+
+// Fonts
+$font: Roboto, Arial, sans-serif
+
+// Colours
+$default: #DBBE94
+
+// -----------------------------------------------
+
+/**
+ * Keyframes
+ */
+
+// -----------------------------------------------
+
+/**
+ * Site-specific mixins
+ */
+
+// -----------------------------------------------
+
+/**
+ * General
+ */
+body
+	color: $default
+	font: rem(13)/rem(24) $font
+	margin: 0
+	padding: 0
+	background: #010101 url(../images/bg.png)
+
+	&.popup-open
+		overflow: hidden
+
+a
+	color: $default
+	text-decoration: none
+
+	&:hover
+		color: #FFF
+
+*:focus,
+*:active
+	outline: none !important
+
+@include colorSelection
+	color: $default
+	@include transparentBG(#000, .5)
+
+// -----------------------------------------------
+
+/**
+ * Global styles
+ */
+
+video
+	width: 100%
+	height: auto
+
+hr
+	clear: both
+	margin: 30px auto
+
+// -----------------------------------------------
+
+/**
+ * Header
+ */
+#header
+	z-index: 100
+	@include cover(fixed)
+	bottom: auto
+	height: 29px
+	color: #DBBE94
+	font-size: rem(11)
+	line-height: 26px
+	padding: 6px 0
+	border-bottom: 1px solid rgba(#FFF, .15)
+	@include boxShadow(#{"0 10px 10px rgba(0,0,0,.15), inset 0 -20px 10px -7px rgba(0,0,0,.2)"})
+	background: #730006
+
+	nav
+		top: -6px
+	
+		[data-title]
+			&:after
+				content: attr(data-title)
+				display: none
+				position: absolute
+				bottom: -30px
+				left: 0
+				width: auto
+				color: #FFF
+				white-space: nowrap
+				padding: 0 6px
+				@include borderRadius(3px)
+				background: #000
+
+	a
+		display: inline-block
+		color: inherit
+		padding: 0 7px
+		@include transition(color .3s ease-in-out)
+
+		&:hover
+			color: #FFF
+
+			&:after
+				display: block
+
+		&.active
+			color: #FFF
+
+		@media (max-width: 455px)
+			padding: 0 3px
+
+	#logo
+		top: 4px
+		@include opacity(.4)
+		display: inline-block
+		font: 300 rem(14) $font
+		letter-spacing: -1px
+		padding: 0
+
+		&:hover
+			@include opacity(1)
+			text-decoration: none
+
+	input
+		top: 4px
+		width: 124px
+		height: auto
+		padding: 3px 25px 3px 7px
+		color: $default
+		color: rgba($default, .5)
+		font: rem(11) $font
+		border: 0
+		@include borderRadius(.25em)
+		@include boxShadow(1px 1px rgba(#FFF, .2))
+		@include transparentBG(#000, .3)
+
+		&:active, &:focus
+			color: $default
+			@include boxShadow(1px 1px rgba(#FFF, .2))
+			outline: none
+			@include transparentBG(#000, .45)
+
+	form:after
+		content: '\f002'
+		position: absolute
+		top: 1px
+		right: 8px
+		color: $default
+		color: rgba($default, .5)
+		font-family: FontAwesome
+
+// -----------------------------------------------
+
+/**
+ * Footer
+ */
+#footer
+	color: #666
+	font-size: rem(10)
+	padding: 15px 0
+	border-top: 1px solid rgba(#FFF, .15)
+
+// -----------------------------------------------
+
+/**
+ * Containers
+ */
+#content
+	width: 90%
+	margin: 27px auto 0
+	padding: 40px
+
+// -----------------------------------------------
+
+/** 
+ * Video blocks
+ */
+
+// Popup video loader
+#video-loader
+	cursor: zoom-out
+	display: none
+	z-index: -100
+	@include cover(fixed)
+	padding: 50px
+	@include transparentBG(#000, .8)
+
+	video
+		@include sq(100%)
+
+	a
+		display: block
+		color: #FFF
+		font-size: rem(10)
+		text-align: center
+		margin: auto
+
+		.fa
+			margin-left: 6px
+
+.popup-open #video-loader
+	z-index: 500
+	display: block
+
+// Videos themselves
+* [ng-video]
+	cursor: pointer
+
+	&:before
+		pointer-events: none
+		z-index: 1
+		content: '\f04b'
+		@include opacity(.5)
+		position: absolute
+		@include sq(100%)
+		text-align: center
+		color: #FFF
+		font: rem(55) FontAwesome
+		@include textShadow(0 0 10px #000)
+		@include transform(translateY(43%))
+		@include transition(opacity .3s ease)
+
+	&:not(.loaded):hover:before
+		@include opacity(.7)
+
+	&.loaded
+		cursor: zoom-in
+
+		&:hover:before
+			@include opacity(0)
+
+	video
+		border: 1px solid #000
+		@include borderRadius(.15em)
+		@include boxShadow(1px 1px rgba(#FFF, .2))
+		background: #000

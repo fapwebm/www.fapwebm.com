@@ -1,0 +1,13 @@
+<div class="flex-video" itemscope itemtype="http://schema.org/VideoObject" itemprop="video">
+	<meta content="{{ post.thumb }}" itemprop="thumbnailUrl" />
+	<meta content="{{ post.src }}" itemprop="contentURL" />
+
+	<video
+		loop 
+		muted
+		preload 
+		poster="{{ post.thumb }}" 
+		data-src="{{ post.src | trustSrc }}" 
+		ng-click="goFullWidth()"
+></video>
+</div>

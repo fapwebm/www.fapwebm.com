@@ -1,0 +1,1 @@
+var app;app=angular.module("app.filters",[]),app.filter("nl2br",function(){return function(r){return null!=r?r.replace(/\n/g,"<br />"):void 0}}),app.filter("trustSrc",["$sce",function(r){return function(n){return r.trustAsResourceUrl(n)}}]);
