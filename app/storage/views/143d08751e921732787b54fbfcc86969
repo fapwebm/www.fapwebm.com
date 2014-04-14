@@ -1,0 +1,11 @@
+
+<?php $__env->startSection('content'); ?>
+
+<h1>Add Videos</h1>
+<br />
+
+<form action="/submit/post" ng-dropzone method="post" class="dropzone" id="my-awesome-dropzone">
+</form>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

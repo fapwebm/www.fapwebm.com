@@ -1,0 +1,28 @@
+
+<?php $__env->startSection('content'); ?>
+
+<div ng-controller='InfCtrl'>
+  <div infinite-scroll='loadMore()'>
+	<ul class="small-block-grid-1 medium-block-grid-3" id="videoList">
+		<?php if (@$posts['error']): ?>
+			<h2><?php echo $posts['error']; ?></h2>
+
+		<?php else: ?>
+		<?php foreach ($posts AS $post): ?>
+			<li ng-repeat='image in images' ng-video>
+				<video loop mutued ng-src="//i.4cdn.org/<?php echo $board; ?>/src/<?php echo $post->tim; ?>.webm"
+					ng-click="goFullWidth()"
+					ng-mouseover="play()" 
+					ng-mouseleave="stop()"
+				></video>
+			</li>
+			<?php endforeach; ?>
+			
+		<?php endif; ?>
+	</ul>
+  </div>
+</div>
+
+<div id="video-loader"></div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

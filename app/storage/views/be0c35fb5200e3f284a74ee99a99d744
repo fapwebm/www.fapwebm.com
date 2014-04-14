@@ -1,0 +1,24 @@
+
+<?php $__env->startSection('content'); ?>
+
+<h1>#anal, #tag2</h1>
+<br />
+
+<ul class="small-block-grid-1 medium-block-grid-3">
+	<li ng-video>
+		<label class="label" ng-bind-html="duration"></label>
+
+		<video loop mutued poster="/v/thumb/1396826678857.webm"
+			src="<?php echo asset('samples/1396826678857.webm'); ?>"
+			ng-click="goFullWidth()"
+			ng-mouseover="play()" 
+			ng-mouseleave="stop()"
+		>
+		</video>
+	</li>
+</ul>
+
+<div id="video-loader"></div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
